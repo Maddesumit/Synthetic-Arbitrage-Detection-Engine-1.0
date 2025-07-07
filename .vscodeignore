@@ -1,0 +1,52 @@
+# Build directories
+build/**
+logs/**
+test_logs/**
+
+# VS Code databases
+.vscode/browse.vc.db*
+.vscode/ipch/**
+
+# Log files
+*.log
+
+# Git
+.git/**
+
+# External dependencies (already built)
+external/**
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (if any)
+node_modules/**
+
+# CMake build files
+CMakeFiles/**
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Object files
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Executables
+bin/**
+*.exe
+
+# Documentation build
+docs/build/**
+docs/_build/**

@@ -1,0 +1,56 @@
+{
+  "system": {
+    "environment": "production"
+  },
+  
+  "exchanges": {
+    "binance": {
+      "rate_limit": {
+        "requests_per_second": 5,
+        "weight_per_minute": 600
+      }
+    },
+    "okx": {
+      "rate_limit": {
+        "requests_per_second": 10,
+        "weight_per_minute": 1200
+      }
+    },
+    "bybit": {
+      "rate_limit": {
+        "requests_per_second": 25,
+        "weight_per_minute": 1500
+      }
+    }
+  },
+  
+  "trading": {
+    "min_profit_threshold": 0.002,
+    "max_capital_per_trade": 50000
+  },
+  
+  "risk": {
+    "max_position_size": 2000000,
+    "max_portfolio_exposure": 10000000
+  },
+  
+  "performance": {
+    "detection_latency_ms": 5,
+    "target_throughput": 5000,
+    "profiling_enabled": true
+  },
+  
+  "logging": {
+    "console_level": "warn",
+    "file_level": "info",
+    "market_data_logging": false
+  },
+  
+  "monitoring": {
+    "health_check_interval_ms": 1000,
+    "alert_thresholds": {
+      "high_latency_ms": 20,
+      "low_throughput": 3000
+    }
+  }
+}

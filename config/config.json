@@ -1,0 +1,158 @@
+{
+  "system": {
+    "name": "Synthetic Arbitrage Detection Engine",
+    "version": "1.0.0",
+    "environment": "development"
+  },
+  
+  "exchanges": {
+    "binance": {
+      "enabled": true,
+      "websocket_url": "wss://stream.binance.com:9443/ws",
+      "api_url": "https://api.binance.com",
+      "reconnect_interval_ms": 5000,
+      "heartbeat_interval_ms": 30000,
+      "max_reconnect_attempts": 10,
+      "rate_limit": {
+        "requests_per_second": 10,
+        "weight_per_minute": 1200
+      }
+    },
+    "okx": {
+      "enabled": true,
+      "websocket_url": "wss://ws.okx.com:8443/ws/v5/public",
+      "api_url": "https://www.okx.com",
+      "reconnect_interval_ms": 5000,
+      "heartbeat_interval_ms": 30000,
+      "max_reconnect_attempts": 10,
+      "rate_limit": {
+        "requests_per_second": 20,
+        "weight_per_minute": 2400
+      }
+    },
+    "bybit": {
+      "enabled": true,
+      "websocket_url": "wss://stream.bybit.com/v5/public/spot",
+      "api_url": "https://api.bybit.com",
+      "reconnect_interval_ms": 5000,
+      "heartbeat_interval_ms": 30000,
+      "max_reconnect_attempts": 10,
+      "rate_limit": {
+        "requests_per_second": 50,
+        "weight_per_minute": 3000
+      }
+    }
+  },
+  
+  "trading": {
+    "min_profit_threshold": 0.001,
+    "max_capital_per_trade": 10000,
+    "max_leverage": 10,
+    "slippage_tolerance": 0.0005,
+    "execution_timeout_ms": 5000,
+    "enabled_instruments": [
+      "BTCUSDT",
+      "ETHUSDT",
+      "ADAUSDT",
+      "DOTUSDT",
+      "LINKUSDT"
+    ],
+    "enabled_arbitrage_types": [
+      "spot_vs_synthetic_spot",
+      "derivative_vs_synthetic_derivative",
+      "cross_synthetic"
+    ]
+  },
+  
+  "risk": {
+    "max_position_size": 1000000,
+    "max_portfolio_exposure": 5000000,
+    "max_correlation_threshold": 0.8,
+    "min_liquidity_depth": 50000,
+    "funding_rate_threshold": 0.01,
+    "basis_risk_threshold": 0.002,
+    "stop_loss_percentage": 0.05,
+    "position_size_percentage": 0.1
+  },
+  
+  "performance": {
+    "detection_latency_ms": 10,
+    "target_throughput": 2000,
+    "max_memory_usage_mb": 1024,
+    "max_cpu_usage_percentage": 80,
+    "profiling_enabled": false,
+    "metrics_update_interval_ms": 1000
+  },
+  
+  "pricing": {
+    "models": {
+      "perpetual_swaps": {
+        "enabled": true,
+        "funding_prediction_method": "linear_regression",
+        "funding_history_periods": 24
+      },
+      "futures": {
+        "enabled": true,
+        "interest_rate": 0.0001,
+        "carry_cost_model": "simple"
+      },
+      "options": {
+        "enabled": false,
+        "volatility_model": "black_scholes",
+        "risk_free_rate": 0.02
+      }
+    },
+    "update_frequency_ms": 100,
+    "price_staleness_threshold_ms": 1000
+  },
+  
+  "logging": {
+    "console_level": "info",
+    "file_level": "debug",
+    "max_file_size_mb": 10,
+    "max_files": 5,
+    "async_queue_size": 8192,
+    "log_directory": "logs",
+    "performance_logging": true,
+    "market_data_logging": false,
+    "arbitrage_logging": true,
+    "risk_logging": true
+  },
+  
+  "monitoring": {
+    "health_check_interval_ms": 5000,
+    "alert_thresholds": {
+      "high_latency_ms": 50,
+      "low_throughput": 1000,
+      "high_memory_usage_mb": 800,
+      "connection_failures": 5
+    },
+    "metrics_retention_hours": 24
+  },
+  
+  "database": {
+    "enabled": false,
+    "connection_string": "",
+    "connection_pool_size": 10,
+    "query_timeout_ms": 5000
+  },
+  
+  "api": {
+    "enabled": false,
+    "host": "localhost",
+    "port": 8080,
+    "cors_enabled": true,
+    "rate_limiting": {
+      "requests_per_minute": 60
+    }
+  },
+  
+  "ui": {
+    "enabled": false,
+    "type": "imgui",
+    "update_frequency_ms": 100,
+    "show_performance_metrics": true,
+    "show_risk_metrics": true,
+    "show_arbitrage_opportunities": true
+  }
+}

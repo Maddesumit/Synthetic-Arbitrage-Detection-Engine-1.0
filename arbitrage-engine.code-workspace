@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/build/**": true,
+            "**/logs/**": true,
+            "**/*.log": true,
+            "**/external/**": true,
+            "**/CMakeFiles/**": true,
+            "**/_deps/**": true
+        },
+        "C_Cpp.intelliSenseEngine": "Tag Parser",
+        "C_Cpp.maxMemory": 1024,
+        "C_Cpp.maxCachedProcesses": 2
+    }
+}
