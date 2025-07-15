@@ -1,0 +1,212 @@
+{
+    "projectId": "arbitrage-detection-engine",
+    "projectName": "Synthetic Arbitrage Detection Engine",
+    "functions": [
+        {
+            "$id": "market-data-api",
+            "name": "Market Data API",
+            "runtime": "node-18.0",
+            "path": "functions/market-data-api",
+            "entrypoint": "src/main.js",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "execute": [
+                "any"
+            ],
+            "events": [],
+            "schedule": "",
+            "timeout": 30,
+            "enabled": true,
+            "logging": true,
+            "variables": {
+                "ENVIRONMENT": "production",
+                "LOG_LEVEL": "info"
+            }
+        },
+        {
+            "$id": "arbitrage-detection",
+            "name": "Arbitrage Detection",
+            "runtime": "node-18.0",
+            "path": "functions/arbitrage-detection",
+            "entrypoint": "src/main.js",
+            "execute": [
+                "any"
+            ],
+            "events": [],
+            "schedule": "*/5 * * * *",
+            "timeout": 60,
+            "enabled": true,
+            "logging": true,
+            "variables": {
+                "WEBSOCKET_TIMEOUT": "30000",
+                "MAX_RECONNECT_ATTEMPTS": "5"
+            }
+        }
+    ],
+    "databases": [
+        {
+            "$id": "arbitrage-db",
+            "name": "Arbitrage Database",
+            "collections": [
+                {
+                    "$id": "market-data",
+                    "name": "Market Data",
+                    "attributes": [
+                        {
+                            "key": "symbol",
+                            "type": "string",
+                            "size": 20,
+                            "required": true
+                        },
+                        {
+                            "key": "exchange",
+                            "type": "string",
+                            "size": 20,
+                            "required": true
+                        },
+                        {
+                            "key": "price",
+                            "type": "double",
+                            "required": true
+                        },
+                        {
+                            "key": "volume",
+                            "type": "double",
+                            "required": true
+                        },
+                        {
+                            "key": "timestamp",
+                            "type": "datetime",
+                            "required": true
+                        }
+                    ],
+                    "indexes": [
+                        {
+                            "key": "symbol_exchange",
+                            "type": "key",
+                            "attributes": [
+                                "symbol",
+                                "exchange"
+                            ]
+                        },
+                        {
+                            "key": "timestamp",
+                            "type": "key",
+                            "attributes": [
+                                "timestamp"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "$id": "arbitrage-opportunities",
+                    "name": "Arbitrage Opportunities",
+                    "attributes": [
+                        {
+                            "key": "symbol",
+                            "type": "string",
+                            "size": 20,
+                            "required": true
+                        },
+                        {
+                            "key": "exchange_a",
+                            "type": "string",
+                            "size": 20,
+                            "required": true
+                        },
+                        {
+                            "key": "exchange_b",
+                            "type": "string",
+                            "size": 20,
+                            "required": true
+                        },
+                        {
+                            "key": "price_a",
+                            "type": "double",
+                            "required": true
+                        },
+                        {
+                            "key": "price_b",
+                            "type": "double",
+                            "required": true
+                        },
+                        {
+                            "key": "profit_potential",
+                            "type": "double",
+                            "required": true
+                        },
+                        {
+                            "key": "profit_percentage",
+                            "type": "double",
+                            "required": true
+                        },
+                        {
+                            "key": "confidence_score",
+                            "type": "double",
+                            "required": true
+                        },
+                        {
+                            "key": "status",
+                            "type": "string",
+                            "size": 20,
+                            "required": true
+                        },
+                        {
+                            "key": "detected_at",
+                            "type": "datetime",
+                            "required": true
+                        }
+                    ],
+                    "indexes": [
+                        {
+                            "key": "symbol_status",
+                            "type": "key",
+                            "attributes": [
+                                "symbol",
+                                "status"
+                            ]
+                        },
+                        {
+                            "key": "detected_at",
+                            "type": "key",
+                            "attributes": [
+                                "detected_at"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "buckets": [
+        {
+            "$id": "dashboard",
+            "name": "Dashboard Files",
+            "permissions": [
+                "read(\"any\")"
+            ],
+            "fileSecurity": true,
+            "enabled": true,
+            "maximumFileSize": 10485760,
+            "allowedFileExtensions": [
+                "html",
+                "css",
+                "js",
+                "png",
+                "jpg",
+                "svg"
+            ],
+            "compression": "gzip",
+            "encryption": true,
+            "antivirus": true
+        }
+    ],
+    "topics": [
+        {
+            "$id": "cd \"/Users/sumitmadde/Desktop/Synthetic Pair Deviation Engine/appwrite-deployment/functions\" && zip -r market-data-api.zip market-data-api/ && zip -r arbitrage-detection.zip arbitrage-detection/",
+            "name": "chmod +x \"/Users/sumitmadde/Desktop/Synthetic Pair Deviation Engine/appwrite-deployment/simple-deploy.sh\""
+        }
+    ]
+}

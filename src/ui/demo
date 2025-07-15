@@ -416,6 +416,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Synthetic Arbitrage Detection Engine</h1>
+            <p>Phase 9 Implementation - Real-time Dashboard</p>
         </div>
         
         <div class="exchange-navbar">
@@ -457,82 +458,89 @@
                 <h3 id="pricingResultsTitle">⚡ Pricing Results</h3>
                 <div id="pricingResults" class="loading">Loading pricing data...</div>
             </div>
-        </div>
-        
-        <!-- Arbitrage Opportunities - Full Width -->
-        <div class="card" style="margin-top: 20px;">
-            <h3>🎯 Arbitrage Opportunities</h3>
-            <div class="arbitrage-controls">
-                <div class="arbitrage-filters">
-                    <div class="filter-group">
-                        <label>Min Profit %</label>
-                        <select class="filter-select" id="minProfitFilter" onchange="filterOpportunities()">
-                            <option value="0">All</option>
-                            <option value="0.1">≥ 0.1%</option>
-                            <option value="0.5">≥ 0.5%</option>
-                            <option value="1.0">≥ 1.0%</option>
-                            <option value="2.0">≥ 2.0%</option>
-                        </select>
+            
+            <div class="card">
+                <h3>🎯 Arbitrage Opportunities</h3>
+                <div class="arbitrage-controls">
+                    <div class="arbitrage-filters">
+                        <div class="filter-group">
+                            <label>Min Profit %</label>
+                            <select class="filter-select" id="minProfitFilter" onchange="filterOpportunities()">
+                                <option value="0">All</option>
+                                <option value="0.1">≥ 0.1%</option>
+                                <option value="0.5">≥ 0.5%</option>
+                                <option value="1.0">≥ 1.0%</option>
+                                <option value="2.0">≥ 2.0%</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Risk Level</label>
+                            <select class="filter-select" id="riskFilter" onchange="filterOpportunities()">
+                                <option value="all">All</option>
+                                <option value="low">Low Risk</option>
+                                <option value="medium">Medium Risk</option>
+                                <option value="high">High Risk</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Market Pair</label>
+                            <select class="filter-select" id="pairFilter" onchange="filterOpportunities()">
+                                <option value="all">All Pairs</option>
+                                <option value="BTCUSDT">BTC/USDT</option>
+                                <option value="ETHUSDT">ETH/USDT</option>
+                                <option value="ADAUSDT">ADA/USDT</option>
+                                <option value="BNBUSDT">BNB/USDT</option>
+                                <option value="SOLUSDT">SOL/USDT</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="filter-group">
-                        <label>Risk Level</label>
-                        <select class="filter-select" id="riskFilter" onchange="filterOpportunities()">
-                            <option value="all">All</option>
-                            <option value="low">Low Risk</option>
-                            <option value="medium">Medium Risk</option>
-                            <option value="high">High Risk</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Market Pair</label>
-                        <select class="filter-select" id="pairFilter" onchange="filterOpportunities()">
-                            <option value="all">All Pairs</option>
-                            <option value="BTCUSDT">BTC/USDT</option>
-                            <option value="ETHUSDT">ETH/USDT</option>
-                            <option value="ADAUSDT">ADA/USDT</option>
-                            <option value="BNBUSDT">BNB/USDT</option>
-                            <option value="SOLUSDT">SOL/USDT</option>
-                        </select>
+                    <div class="view-toggle">
+                        <button class="active" id="tableViewBtn" onclick="switchView('table')">📊 Table</button>
+                        <button id="cardViewBtn" onclick="switchView('card')">📋 Cards</button>
                     </div>
                 </div>
-                <div class="view-toggle">
-                    <button class="active" id="tableViewBtn" onclick="switchView('table')">📊 Table</button>
-                    <button id="cardViewBtn" onclick="switchView('card')">📋 Cards</button>
+                
+                <div id="opportunitiesTableView" class="arbitrage-table">
+                    <table class="opportunities-table">
+                        <thead>
+                            <tr>
+                                <th>Market Pair</th>
+                                <th>From Exchange</th>
+                                <th>To Exchange</th>
+                                <th>Buy Price</th>
+                                <th>Sell Price</th>
+                                <th>Expected Profit</th>
+                                <th>Volume (USDT)</th>
+                                <th>Risk Score</th>
+                                <th>Execution Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="opportunitiesTableBody">
+                            <tr>
+                                <td colspan="10" class="loading" style="text-align: center; padding: 40px;">
+                                    🔍 Scanning for arbitrage opportunities...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="opportunitiesCardView" class="loading" style="display: none;">
+                    Scanning for opportunities...
                 </div>
             </div>
             
-            <div id="opportunitiesTableView" class="arbitrage-table">
-                <table class="opportunities-table">
-                    <thead>
-                        <tr>
-                            <th>Market Pair</th>
-                            <th>From Exchange</th>
-                            <th>To Exchange</th>
-                            <th>Buy Price</th>
-                            <th>Sell Price</th>
-                            <th>Expected Profit</th>
-                            <th>Volume (USDT)</th>
-                            <th>Risk Score</th>
-                            <th>Execution Time</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="opportunitiesTableBody">
-                        <tr>
-                            <td colspan="10" class="loading" style="text-align: center; padding: 40px;">
-                                🔍 Scanning for arbitrage opportunities...
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card">
+                <h3>📈 Performance Metrics</h3>
+                <div id="performance" class="loading">Loading performance data...</div>
             </div>
             
-            <div id="opportunitiesCardView" class="loading" style="display: none;">
-                Scanning for opportunities...
+            <div class="card">
+                <h3>⚠️ Risk Metrics</h3>
+                <div id="riskMetrics" class="loading">Loading risk data...</div>
             </div>
-        </div>
-        
-        <div class="grid" style="margin-top: 20px;">
+            
             <!-- Phase 7 Performance Metrics Cards -->
             <div class="card">
                 <h3>⚡ System Performance</h3>
@@ -583,6 +591,108 @@
                         <div class="metric-label">Active Alerts</div>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Enhanced Visualizations Section -->
+        <div class="card" style="margin-top: 20px;">
+            <h3>📈 Live Price Charts</h3>
+            <div class="trading-pair-tabs">
+                <button class="tab-button active" onclick="showChart('BTCUSDT')">₿ BTC/USDT</button>
+                <button class="tab-button" onclick="showChart('ETHUSDT')">⟨⟩ ETH/USDT</button>
+                <button class="tab-button" onclick="showChart('ADAUSDT')">♠ ADA/USDT</button>
+                <button class="tab-button" onclick="showChart('BNBUSDT')">🔶 BNB/USDT</button>
+                <button class="tab-button" onclick="showChart('SOLUSDT')">🌞 SOL/USDT</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="grid" style="margin-top: 20px;">
+            <div class="card">
+                <h3>📊 Exchange Volume Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="volumeChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>⚡ Arbitrage Opportunities Timeline</h3>
+                <div class="chart-container">
+                    <canvas id="arbitrageChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Order Book Depth Visualization -->
+        <div class="card" style="margin-top: 20px;">
+            <h3>📖 Order Book Depth Analysis</h3>
+            <div class="trading-pair-tabs">
+                <button class="tab-button active" onclick="showOrderBook('BTCUSDT')">₿ BTC/USDT</button>
+                <button class="tab-button" onclick="showOrderBook('ETHUSDT')">⟨⟩ ETH/USDT</button>
+                <button class="tab-button" onclick="showOrderBook('ADAUSDT')">♠ ADA/USDT</button>
+            </div>
+            <div class="grid" style="margin-top: 15px;">
+                <div class="chart-container">
+                    <canvas id="orderBookChart"></canvas>
+                </div>
+                <div class="order-book-table">
+                    <h4>Live Order Book</h4>
+                    <div id="orderBookData" class="loading">Loading order book...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advanced Risk Dashboard -->
+        <div class="card" style="margin-top: 20px;">
+            <h3>🎯 Advanced Risk Analytics</h3>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="portfolioVar">$2,500</div>
+                    <div class="metric-label">Portfolio VaR (95%)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="expectedShortfall">$3,000</div>
+                    <div class="metric-label">Expected Shortfall</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="concentrationRisk">25%</div>
+                    <div class="metric-label">Concentration Risk</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="correlationRisk">35%</div>
+                    <div class="metric-label">Correlation Risk</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="riskHeatmapChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Portfolio Performance Dashboard -->
+        <div class="card" style="margin-top: 20px;">
+            <h3>💰 Portfolio Performance Tracking</h3>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="totalPnL">+$12,450</div>
+                    <div class="metric-label">Total P&L</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="realizedPnL">+$8,230</div>
+                    <div class="metric-label">Realized P&L</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="unrealizedPnL">+$4,220</div>
+                    <div class="metric-label">Unrealized P&L</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="sharpeRatio">1.85</div>
+                    <div class="metric-label">Sharpe Ratio</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="pnlChart"></canvas>
             </div>
         </div>
         
@@ -1363,6 +1473,373 @@
             }
         }
         
+        // Chart variables
+        let priceChart, volumeChart, arbitrageChart, orderBookChart, riskHeatmapChart, pnlChart;
+        let priceData = {
+            BTCUSDT: [], ETHUSDT: [], ADAUSDT: [], BNBUSDT: [], SOLUSDT: []
+        };
+        let currentPair = 'BTCUSDT';
+        let currentOrderBookPair = 'BTCUSDT';
+        
+        // Initialize charts
+        function initializeCharts() {
+            // Price chart
+            const priceCtx = document.getElementById('priceChart').getContext('2d');
+            priceChart = new Chart(priceCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Binance',
+                        data: [],
+                        borderColor: '#F0B90B',
+                        backgroundColor: 'rgba(240, 185, 11, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'OKX',
+                        data: [],
+                        borderColor: '#0066FF',
+                        backgroundColor: 'rgba(0, 102, 255, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Bybit',
+                        data: [],
+                        borderColor: '#FF6B35',
+                        backgroundColor: 'rgba(255, 107, 53, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: currentPair + ' Price Movement'
+                        }
+                    }
+                }
+            });
+            
+            // Volume chart
+            const volumeCtx = document.getElementById('volumeChart').getContext('2d');
+            volumeChart = new Chart(volumeCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Binance', 'OKX', 'Bybit'],
+                    datasets: [{
+                        data: [40, 35, 25],
+                        backgroundColor: ['#F0B90B', '#0066FF', '#FF6B35']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // Order Book Chart
+            const orderBookCtx = document.getElementById('orderBookChart').getContext('2d');
+            orderBookChart = new Chart(orderBookCtx, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Bids',
+                        data: [],
+                        backgroundColor: 'rgba(76, 175, 80, 0.8)',
+                        borderColor: 'rgba(76, 175, 80, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Asks',
+                        data: [],
+                        backgroundColor: 'rgba(244, 67, 54, 0.8)',
+                        borderColor: 'rgba(244, 67, 54, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: false
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: currentOrderBookPair + ' Order Book Depth'
+                        }
+                    }
+                }
+            });
+            
+            // Risk Heatmap Chart
+            const riskHeatmapCtx = document.getElementById('riskHeatmapChart').getContext('2d');
+            riskHeatmapChart = new Chart(riskHeatmapCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Risk Factors',
+                        data: [
+                            {x: 20, y: 30, r: 10},
+                            {x: 40, y: 50, r: 15},
+                            {x: 60, y: 70, r: 8},
+                            {x: 80, y: 40, r: 12}
+                        ],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: {
+                                display: true,
+                                text: 'Volatility %'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Correlation %'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Risk Factor Heatmap'
+                        }
+                    }
+                }
+            });
+            
+            // P&L Chart
+            const pnlCtx = document.getElementById('pnlChart').getContext('2d');
+            pnlChart = new Chart(pnlCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Cumulative P&L',
+                        data: [],
+                        borderColor: 'rgba(76, 175, 80, 1)',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Portfolio P&L Over Time'
+                        }
+                    }
+                }
+            });
+            
+            // Arbitrage chart
+            const arbCtx = document.getElementById('arbitrageChart').getContext('2d');
+            arbitrageChart = new Chart(arbCtx, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Profit %',
+                        data: [],
+                        backgroundColor: 'rgba(76, 175, 80, 0.8)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        function showChart(pair) {
+            currentPair = pair;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update chart title
+            priceChart.options.plugins.title.text = pair + ' Price Movement';
+            priceChart.update();
+        }
+        
+        function showOrderBook(pair) {
+            currentOrderBookPair = pair;
+            
+            // Update tab buttons for order book
+            const orderBookTabs = document.querySelectorAll('.trading-pair-tabs')[1].querySelectorAll('.tab-button');
+            orderBookTabs.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update order book chart
+            orderBookChart.options.plugins.title.text = pair + ' Order Book Depth';
+            updateOrderBookChart();
+            updateOrderBookTable();
+        }
+        
+        function updateOrderBookChart() {
+            // Simulate order book data
+            const pricelevels = [];
+            const bids = [];
+            const asks = [];
+            
+            const basePrice = currentOrderBookPair === 'BTCUSDT' ? 45000 : 
+                             currentOrderBookPair === 'ETHUSDT' ? 3000 : 1000;
+            
+            for (let i = -10; i <= 10; i++) {
+                const price = basePrice + (i * (basePrice * 0.001));
+                pricelevels.push(price.toFixed(2));
+                
+                if (i < 0) {
+                    bids.push(Math.random() * 100);
+                    asks.push(0);
+                } else if (i > 0) {
+                    bids.push(0);
+                    asks.push(Math.random() * 100);
+                } else {
+                    bids.push(0);
+                    asks.push(0);
+                }
+            }
+            
+            orderBookChart.data.labels = pricelevels;
+            orderBookChart.data.datasets[0].data = bids;
+            orderBookChart.data.datasets[1].data = asks;
+            orderBookChart.update('none');
+        }
+        
+        function updateOrderBookTable() {
+            const orderBookElement = document.getElementById('orderBookData');
+            
+            let html = '<div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 10px;">';
+            html += '<span>Price</span><span>Size</span><span>Total</span></div>';
+            
+            // Simulate asks (higher prices)
+            const basePrice = currentOrderBookPair === 'BTCUSDT' ? 45000 : 
+                             currentOrderBookPair === 'ETHUSDT' ? 3000 : 1000;
+            
+            for (let i = 5; i > 0; i--) {
+                const price = (basePrice + (i * (basePrice * 0.0001))).toFixed(2);
+                const size = (Math.random() * 10).toFixed(3);
+                const total = (parseFloat(price) * parseFloat(size)).toFixed(2);
+                html += `<div class="order-book-item"><span class="ask-price">${price}</span><span>${size}</span><span>$${total}</span></div>`;
+            }
+            
+            html += '<div style="border-top: 2px solid #ccc; margin: 10px 0; padding-top: 10px;"></div>';
+            
+            // Simulate bids (lower prices)
+            for (let i = 1; i <= 5; i++) {
+                const price = (basePrice - (i * (basePrice * 0.0001))).toFixed(2);
+                const size = (Math.random() * 10).toFixed(3);
+                const total = (parseFloat(price) * parseFloat(size)).toFixed(2);
+                html += `<div class="order-book-item"><span class="bid-price">${price}</span><span>${size}</span><span>$${total}</span></div>`;
+            }
+            
+            orderBookElement.innerHTML = html;
+        }
+        
+        function updateRiskMetricsDisplay() {
+            // Update risk metric cards with simulated data
+            document.getElementById('portfolioVar').textContent = '$' + (2000 + Math.random() * 1000).toFixed(0);
+            document.getElementById('expectedShortfall').textContent = '$' + (2500 + Math.random() * 1000).toFixed(0);
+            document.getElementById('concentrationRisk').textContent = (20 + Math.random() * 15).toFixed(1) + '%';
+            document.getElementById('correlationRisk').textContent = (30 + Math.random() * 20).toFixed(1) + '%';
+        }
+        
+        function updatePortfolioMetrics() {
+            // Update portfolio metric cards
+            const totalPnL = 10000 + (Math.random() * 5000);
+            const realizedPnL = totalPnL * 0.7;
+            const unrealizedPnL = totalPnL * 0.3;
+            
+            document.getElementById('totalPnL').textContent = '+$' + totalPnL.toFixed(0);
+            document.getElementById('realizedPnL').textContent = '+$' + realizedPnL.toFixed(0);
+            document.getElementById('unrealizedPnL').textContent = '+$' + unrealizedPnL.toFixed(0);
+            document.getElementById('sharpeRatio').textContent = (1.5 + Math.random() * 0.5).toFixed(2);
+            
+            // Update P&L chart
+            const now = new Date().toLocaleTimeString();
+            if (pnlChart.data.labels.length > 20) {
+                pnlChart.data.labels.shift();
+                pnlChart.data.datasets[0].data.shift();
+            }
+            
+            pnlChart.data.labels.push(now);
+            pnlChart.data.datasets[0].data.push(totalPnL);
+            pnlChart.update('none');
+        }
+        
+        function updateConnectionStatus() {
+            // Simulate connection status updates
+            const exchanges = ['binance', 'okx', 'bybit'];
+            
+            exchanges.forEach(exchange => {
+                const latency = (30 + Math.random() * 40).toFixed(0) + 'ms';
+                const messages = (Math.floor(Math.random() * 1000) + 500).toString();
+                
+                document.getElementById(exchange + 'Latency').textContent = latency;
+                document.getElementById(exchange + 'Messages').textContent = messages;
+            });
+        }
+        
+        function updateCharts() {
+            // Update price chart with real data
+            const now = new Date().toLocaleTimeString();
+            
+            // Simulate some price data for demo
+            const basePrice = currentPair === 'BTCUSDT' ? 45000 : currentPair === 'ETHUSDT' ? 3000 : 1000;
+            const variation = (Math.random() - 0.5) * 10;
+            
+            if (priceChart.data.labels.length > 20) {
+                priceChart.data.labels.shift();
+                priceChart.data.datasets.forEach(dataset => dataset.data.shift());
+            }
+            
+            priceChart.data.labels.push(now);
+            priceChart.data.datasets[0].data.push(basePrice + variation);      // Binance
+            priceChart.data.datasets[1].data.push(basePrice + variation + 1); // OKX
+            priceChart.data.datasets[2].data.push(basePrice + variation - 1); // Bybit
+            priceChart.update('none');
+            
+            // Update other charts and metrics
+            updateOrderBookChart();
+            updateRiskMetricsDisplay();
+            updatePortfolioMetrics();
+            updateConnectionStatus();
+        }
+        
         function addAlert(type, message) {
             const alertContainer = document.getElementById('alertContainer');
             const alertDiv = document.createElement('div');
@@ -1379,11 +1856,14 @@
         
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
             updateAll();
+            updateOrderBookTable();
             
             // Auto-refresh every 3 seconds for more responsive updates
             setInterval(() => {
                 updateAll();
+                updateCharts();
             }, 3000);
             
             // Demo alerts with more variety

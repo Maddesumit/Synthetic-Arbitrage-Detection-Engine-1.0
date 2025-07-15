@@ -1,0 +1,17 @@
+{
+  "name": "arbitrage-detection",
+  "version": "1.0.0",
+  "description": "Arbitrage Detection Function for Appwrite",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "node-appwrite": "^13.0.0",
+    "ws": "^8.14.2",
+    "axios": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
