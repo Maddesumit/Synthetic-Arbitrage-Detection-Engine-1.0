@@ -15,6 +15,150 @@ The Synthetic Arbitrage Detection Engine is a sophisticated trading system that 
 - **Multi-Exchange Support**: Robust WebSocket connections with reconnection handling
 - **Advanced Trading Strategies**: ML-enhanced synthetic arbitrage strategies
 
+## Documentation
+
+The project includes comprehensive documentation in PDF format:
+
+### 📄 Available Documentation
+
+1. **[Technical Report](docs/Synthetic_Arbitrage_Detection_Engine_Technical_Report.pdf)**
+   - System architecture and design decisions
+   - Performance optimization techniques
+   - Risk management strategies
+   - Future improvement suggestions
+
+2. **[Code Documentation](docs/Synthetic_Arbitrage_Code_Documentation.pdf)**
+   - API documentation and interfaces
+   - Setup and deployment instructions
+   - System maintenance guidelines
+   - Developer reference guide
+
+3. **[Financial Documentation](docs/Synthetic_Arbitrage_Financial_Documentation.pdf)**
+   - Synthetic pricing methodology
+   - Arbitrage strategy explanation
+   - Risk management framework
+   - Regulatory compliance guidelines
+
+4. **[Performance Analysis](docs/Synthetic_Arbitrage_Performance_Analysis.pdf)**
+   - Latency benchmarking results
+   - Throughput measurements
+   - Memory usage analysis
+   - Scalability characteristics
+
+5. **[Video Demonstration Script](docs/Synthetic_Arbitrage_Video_Demonstration_Script.pdf)**
+   - Complete video recording script
+   - System functionality demonstration
+   - Code architecture review
+   - Performance characteristics explanation
+
+## Demo Screenshots
+
+### 1. Main Dashboard - Multi-Exchange View
+![Main Dashboard](screenshots/1.png)
+
+The main dashboard provides a comprehensive overview of the entire trading system with all exchanges active.
+
+### 2. Single Exchange Focus - OKX Dashboard
+![OKX Dashboard](screenshots/2.png)
+
+This view demonstrates the system's ability to focus on a single exchange (OKX) while maintaining full functionality:
+
+**Exchange-Specific Monitoring:**
+- Dedicated OKX connection status and health metrics
+- OKX-specific trading pairs and their individual performance
+- Exchange-specific latency measurements and connection quality
+- OKX WebSocket connection stability indicators
+
+**Focused Market Data:**
+- Concentrated view of OKX market data streams
+- OKX-specific price feeds and order book information
+- Real-time updates showing OKX market conditions
+- Trading volume and liquidity metrics for OKX pairs
+
+**Isolated Performance Metrics:**
+- OKX-specific processing performance
+- Exchange-isolated latency measurements
+- OKX data throughput and processing efficiency
+- Connection quality and stability indicators
+
+**System Optimization:**
+- Resource allocation focused on single exchange
+- Optimized processing for OKX-specific data formats
+- Reduced complexity for enhanced performance monitoring
+- Streamlined interface for exchange-specific analysis
+
+### 3. Arbitrage Opportunities & Performance Analytics
+![Arbitrage Opportunities](screenshots/3.png)
+
+The arbitrage opportunities dashboard showcases the core functionality of the detection engine:
+
+**Arbitrage Opportunities Detection:**
+- Real-time identification of profitable arbitrage opportunities
+- Cross-exchange price discrepancies and profit margins
+- Opportunity ranking based on profitability and risk metrics
+- Dynamic opportunity updates as market conditions change
+
+**System Performance Monitoring:**
+- Processing latency measurements across all components
+- Data throughput statistics and processing efficiency
+- Memory usage optimization and allocation patterns
+- CPU utilization and performance optimization metrics
+
+**Latency Tracking System:**
+- End-to-end latency measurements from data ingestion to decision making
+- Network latency breakdown by exchange and connection type
+- Processing latency for arbitrage detection algorithms
+- Historical latency trends and performance optimization results
+
+**System Health Dashboard:**
+- Comprehensive health indicators for all system components
+- Real-time monitoring of critical system functions
+- Alert status and warning indicators for potential issues
+- Performance degradation detection and early warning systems
+
+**Advanced Analytics:**
+- Statistical analysis of arbitrage opportunity frequency
+- Profitability distribution and risk-adjusted returns
+- Market efficiency measurements and trend analysis
+- Predictive analytics for opportunity forecasting
+
+### 4. Exchange Connectivity & Real-time Alerts
+![Exchange Status & Alerts](screenshots/4.png)
+
+The final dashboard focuses on exchange connectivity management and alert systems:
+
+**Exchange Connection Status:**
+- Detailed connection status for each supported exchange
+- WebSocket connection health and stability indicators
+- Connection uptime statistics and reliability metrics
+- Authentication status and API key validation
+
+**Real-time Alert System:**
+- Immediate notifications for critical system events
+- Alert categorization by severity and system component
+- Historical alert log and resolution tracking
+- Customizable alert thresholds and notification settings
+
+**Connection Quality Monitoring:**
+- Network latency measurements for each exchange
+- Connection stability analysis and trend monitoring
+- Bandwidth utilization and data transfer efficiency
+- Automatic reconnection status and retry mechanisms
+
+**System Diagnostics:**
+- Comprehensive diagnostic information for troubleshooting
+- Error rate monitoring and exception tracking
+- Performance bottleneck identification and resolution
+- System resource utilization and optimization recommendations
+
+**Operational Intelligence:**
+- Real-time operational metrics and KPIs
+- System reliability and availability measurements
+- Performance trending and capacity planning data
+- Automated health checks and preventive maintenance indicators
+
+Each screenshot demonstrates the sophisticated monitoring and control capabilities of the Synthetic Arbitrage Detection Engine, showcasing its ability to handle complex multi-exchange operations while maintaining high performance and reliability standards.
+
 ## System Requirements
 
 - Modern C++ compiler with C++17 support
@@ -233,10 +377,3 @@ The system is fully operational and production-ready with:
 - Advanced trading strategies
 - Real-time monitoring and alerts
 
-## License
-
-[License Information]
-
-## Contact
-
-[Contact Information]
