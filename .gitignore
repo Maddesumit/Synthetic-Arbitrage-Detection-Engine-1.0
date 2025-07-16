@@ -49,6 +49,28 @@ Makefile
 
 # Dependencies
 node_modules/
+.npm/
+
+# Configuration files (keep templates)
+config/local.json
+config/development.json
+config/production.json
+
+# Test and temporary files
+test_*.json
+*.tmp
+*.temp
+
+# Deployment artifacts
+appwrite-deployment/
+docker-compose.yml
+.env
+.env.local
+
+# OS specific
+.DS_Store
+Thumbs.db
+node_modules/
 external/*/
 
 # Environment files
