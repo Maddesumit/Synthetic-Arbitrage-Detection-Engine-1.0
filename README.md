@@ -15,42 +15,6 @@ The Synthetic Arbitrage Detection Engine is a sophisticated trading system that 
 - **Multi-Exchange Support**: Robust WebSocket connections with reconnection handling
 - **Advanced Trading Strategies**: ML-enhanced synthetic arbitrage strategies
 
-## Documentation
-
-The project includes comprehensive documentation in PDF format:
-
-### 📄 Available Documentation
-
-1. **[Technical Report](docs/Synthetic_Arbitrage_Detection_Engine_Technical_Report.pdf)**
-   - System architecture and design decisions
-   - Performance optimization techniques
-   - Risk management strategies
-   - Future improvement suggestions
-
-2. **[Code Documentation](docs/Synthetic_Arbitrage_Code_Documentation.pdf)**
-   - API documentation and interfaces
-   - Setup and deployment instructions
-   - System maintenance guidelines
-   - Developer reference guide
-
-3. **[Financial Documentation](docs/Synthetic_Arbitrage_Financial_Documentation.pdf)**
-   - Synthetic pricing methodology
-   - Arbitrage strategy explanation
-   - Risk management framework
-   - Regulatory compliance guidelines
-
-4. **[Performance Analysis](docs/Synthetic_Arbitrage_Performance_Analysis.pdf)**
-   - Latency benchmarking results
-   - Throughput measurements
-   - Memory usage analysis
-   - Scalability characteristics
-
-5. **[Video Demonstration Script](docs/Synthetic_Arbitrage_Video_Demonstration_Script.pdf)**
-   - Complete video recording script
-   - System functionality demonstration
-   - Code architecture review
-   - Performance characteristics explanation
-
 ## Demo Screenshots
 
 ### 1. Main Dashboard - Multi-Exchange View
@@ -158,6 +122,44 @@ The final dashboard focuses on exchange connectivity management and alert system
 - Automated health checks and preventive maintenance indicators
 
 Each screenshot demonstrates the sophisticated monitoring and control capabilities of the Synthetic Arbitrage Detection Engine, showcasing its ability to handle complex multi-exchange operations while maintaining high performance and reliability standards.
+
+
+## Documentation
+
+The project includes comprehensive documentation in PDF format:
+
+### 📄 Available Documentation
+
+1. **[Technical Report](docs/Synthetic_Arbitrage_Detection_Engine_Technical_Report.pdf)**
+   - System architecture and design decisions
+   - Performance optimization techniques
+   - Risk management strategies
+   - Future improvement suggestions
+
+2. **[Code Documentation](docs/Synthetic_Arbitrage_Code_Documentation.pdf)**
+   - API documentation and interfaces
+   - Setup and deployment instructions
+   - System maintenance guidelines
+   - Developer reference guide
+
+3. **[Financial Documentation](docs/Synthetic_Arbitrage_Financial_Documentation.pdf)**
+   - Synthetic pricing methodology
+   - Arbitrage strategy explanation
+   - Risk management framework
+   - Regulatory compliance guidelines
+
+4. **[Performance Analysis](docs/Synthetic_Arbitrage_Performance_Analysis.pdf)**
+   - Latency benchmarking results
+   - Throughput measurements
+   - Memory usage analysis
+   - Scalability characteristics
+
+5. **[Video Demonstration Script](docs/Synthetic_Arbitrage_Video_Demonstration_Script.pdf)**
+   - Complete video recording script
+   - System functionality demonstration
+   - Code architecture review
+   - Performance characteristics explanation
+
 
 ## System Requirements
 
@@ -306,9 +308,6 @@ The engine provides comprehensive monitoring through:
 5. Ensure all tests pass
 6. Submit a pull request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Support
 
